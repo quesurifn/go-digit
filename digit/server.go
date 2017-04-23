@@ -16,7 +16,8 @@ func NewServer(port string) *Server {
 	s := &Server{
 		Engine: gin.Default(),
 	}
-	s.LoadHTMLGlob("templates/*")
+	s.LoadHTMLGlob("templates/open-digit/dist/index.html")
+
 	s.GET("/", func(c *gin.Context) {
 
 		// Call the HTML method of the Context to render a template
