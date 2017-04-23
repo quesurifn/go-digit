@@ -1,7 +1,7 @@
 package digit
 
 import (
-	"net/http"
+	"fmt"
 
 	"gopkg.in/gin-gonic/gin.v1"
 )
@@ -9,29 +9,28 @@ import (
 // Server is the struct that defines the application server
 type Server struct {
 	*gin.Engine
+	port string
 }
 
 // NewServer creates a new instance of Server
 func NewServer(port string) *Server {
-	s := &Server{
+	return &Server{
 		Engine: gin.Default(),
+		port:   port,
 	}
-	s.LoadHTMLGlob("templates/open-digit/dist/index.html")
+}
 
-	s.GET("/", func(c *gin.Context) {
+// Runs gin
+func (s *Server) Run() error {
+	s.configure()
+	return s.Engine.Run(fmt.Sprintf(":%s", s.port))
+}
 
-		// Call the HTML method of the Context to render a template
-		c.HTML(
-			// Set the HTTP status to 200 (OK)
-			http.StatusOK,
-			// Use the index.html template
-			"index.html",
-			// Pass the data that the page uses (in this case, 'title')
-			gin.H{
-				"title": "Go Digit",
-			},
-		)
-
-	})
-	return s
+// Sets logger and recovery
+func (s *Server) configure() {
+	s.Use(gin.Logger())
+	s.Use(gin.Recovery())
+	s.Static("/templates", "./templates")
+	s.LoadHTMLGlob("templates/open-digit/src/*.html")
+	s.GET("/", s.Index)
 }

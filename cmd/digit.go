@@ -16,7 +16,10 @@ var digitRunCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Hello world!")
 		s := digit.NewServer(port)
-		s.Run()
+		err := s.Run()
+		if err != nil {
+			panic(err)
+		}
 	},
 }
 
