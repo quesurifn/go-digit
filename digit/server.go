@@ -31,6 +31,6 @@ func (s *Server) configure() {
 	s.Use(gin.Logger())
 	s.Use(gin.Recovery())
 	s.Static("/templates", "./templates")
-	s.LoadHTMLGlob("templates/open-digit/src/*.html")
+	s.LoadHTMLGlob("templates/open-digit/dist/*.html")
 	s.GET("/", s.Index)
 }
