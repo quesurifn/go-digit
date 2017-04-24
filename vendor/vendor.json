@@ -51,6 +51,12 @@
 			"revisionTime": "2017-03-22T23:44:13Z"
 		},
 		{
+			"checksumSHA1": "DRhp4yRad7JpZICNmdDKYsh07+8=",
+			"path": "github.com/plaid/plaid-go/plaid",
+			"revision": "a61bc9dd11501e3d190f25f39c6a3cbe4eb61a36",
+			"revisionTime": "2017-02-20T00:28:39Z"
+		},
+		{
 			"checksumSHA1": "EHnQE8BPk7enyiZbYtpGMo0FrHs=",
 			"path": "github.com/spf13/cobra",
 			"revision": "c4f4d75ecce89cf3a82c19d62b5240d308ce7187",

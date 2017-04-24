@@ -3,15 +3,16 @@ package digit
 import (
 	"fmt"
 
-	//	"gopkg.in/gin-gonic/gin.v1"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
+	"github.com/quesurifn/go-digit/banker"
 )
 
 // Server is the struct that defines the application server
 type Server struct {
 	*gin.Engine
-	port string
+	port  string
+	Plaid *banker.Plaid
 }
 
 // NewServer creates a new instance of Server
@@ -36,4 +37,5 @@ func (s *Server) configure() {
 	//	s.Static("/", "./templates/open-digit/dist/")
 	s.LoadHTMLGlob("templates/open-digit/dist/*.html")
 	s.GET("/", s.Index)
+	s.POST("/plaid/exchangeToken", s.ExchangeToken)
 }
