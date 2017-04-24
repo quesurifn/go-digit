@@ -3,7 +3,9 @@ package digit
 import (
 	"fmt"
 
-	"gopkg.in/gin-gonic/gin.v1"
+	//	"gopkg.in/gin-gonic/gin.v1"
+	"github.com/gin-contrib/static"
+	"github.com/gin-gonic/gin"
 )
 
 // Server is the struct that defines the application server
@@ -30,7 +32,8 @@ func (s *Server) Run() error {
 func (s *Server) configure() {
 	s.Use(gin.Logger())
 	s.Use(gin.Recovery())
-	s.Static("/templates", "./templates")
+	s.Use(static.Serve("/", static.LocalFile("./templates/open-digit/dist/", true)))
+	//	s.Static("/", "./templates/open-digit/dist/")
 	s.LoadHTMLGlob("templates/open-digit/dist/*.html")
 	s.GET("/", s.Index)
 }
