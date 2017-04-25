@@ -60,6 +60,7 @@ func init() {
 	// when this action is called directly.
 	RootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	RootCmd.AddCommand(digitRunCmd)
+	RootCmd.AddCommand(plaidCmd)
 }
 
 // initConfig reads in config file and ENV variables if set.
