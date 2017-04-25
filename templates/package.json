@@ -38,12 +38,21 @@
     "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "webpack-fail-plugin": "^1.0.5",
     "html-loader": "^0.4.4",
+    "ts-loader": "^2.0.0",
     "sass-loader": "^6.0.1",
     "node-sass": "^4.5.0",
     "eslint": "^3.15.0",
     "eslint-config-xo-space": "^0.15.0",
     "eslint-loader": "^1.6.1",
-    "babel-loader": "^6.3.2"
+    "babel-loader": "^6.3.2",
+    "babel-eslint": "^7.1.1",
+    "eslint-plugin-babel": "^4.0.1",
+    "tslint": "^4.4.2",
+    "typescript": "^2.1.0",
+    "@types/node": "^7.0.5",
+    "@types/es6-shim": "^0.31.32",
+    "@types/jasmine": "^2.5.43",
+    "tslint-loader": "^3.4.2"
   },
   "scripts": {
     "build": "gulp",
@@ -58,11 +67,9 @@
       "browser": true,
       "jasmine": true
     },
+    "parser": "babel-eslint",
     "extends": [
-      "xo-space"
-    ],
-    "rules": {
-      "new-cap": 0
-    }
+      "xo-space/esnext"
+    ]
   }
 }

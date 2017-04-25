@@ -7,7 +7,7 @@
       "_": [],
       "framework": "angular2",
       "modules": "webpack",
-      "js": "js",
+      "js": "typescript",
       "css": "scss",
       "ci": [],
       "sample": "hello",

@@ -16,9 +16,9 @@ module.exports = {
         ]
       },
       {
-        test: /\.js$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
+        loader: 'tslint-loader',
         enforce: 'pre'
       },
       {
@@ -28,6 +28,13 @@ module.exports = {
           'css-loader',
           'sass-loader',
           'postcss-loader'
+        ]
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        loaders: [
+          'ts-loader'
         ]
       },
       {
@@ -51,7 +58,14 @@ module.exports = {
     ),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: () => [autoprefixer]
+        postcss: () => [autoprefixer],
+        resolve: {},
+        ts: {
+          configFileName: 'tsconfig.json'
+        },
+        tslint: {
+          configuration: require('../tslint.json')
+        }
       },
       debug: true
     })
@@ -60,6 +74,14 @@ module.exports = {
   output: {
     path: path.join(process.cwd(), conf.paths.tmp),
     filename: 'index.js'
+  },
+  resolve: {
+    extensions: [
+      '.webpack.js',
+      '.web.js',
+      '.js',
+      '.ts'
+    ]
   },
   entry: `./${conf.path.src('index')}`
 };

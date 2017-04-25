@@ -10,10 +10,17 @@ module.exports = {
         ]
       },
       {
-        test: /\.js$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
+        loader: 'tslint-loader',
         enforce: 'pre'
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        loaders: [
+          'ts-loader'
+        ]
       },
       {
         test: /\.html$/,
@@ -29,9 +36,25 @@ module.exports = {
       conf.paths.src
     ),
     new webpack.LoaderOptionsPlugin({
-      options: {},
+      options: {
+        resolve: {},
+        ts: {
+          configFileName: 'tsconfig.json'
+        },
+        tslint: {
+          configuration: require('../tslint.json')
+        }
+      },
       debug: true
     })
   ],
-  devtool: 'source-map'
+  devtool: 'source-map',
+  resolve: {
+    extensions: [
+      '.webpack.js',
+      '.web.js',
+      '.js',
+      '.ts'
+    ]
+  }
 };

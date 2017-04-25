@@ -17,9 +17,9 @@ module.exports = {
         ]
       },
       {
-        test: /\.js$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
+        loader: 'tslint-loader',
         enforce: 'pre'
       },
       {
@@ -28,6 +28,13 @@ module.exports = {
           fallback: 'style-loader',
           use: 'css-loader?minimize!sass-loader!postcss-loader'
         })
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        loaders: [
+          'ts-loader'
+        ]
       },
       {
         test: /\.html$/,
@@ -59,13 +66,28 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: () => [autoprefixer]
+        postcss: () => [autoprefixer],
+        resolve: {},
+        ts: {
+          configFileName: 'tsconfig.json'
+        },
+        tslint: {
+          configuration: require('../tslint.json')
+        }
       }
     })
   ],
   output: {
     path: path.join(process.cwd(), conf.paths.dist),
     filename: '[name]-[hash].js'
+  },
+  resolve: {
+    extensions: [
+      '.webpack.js',
+      '.web.js',
+      '.js',
+      '.ts'
+    ]
   },
   entry: `./${conf.path.src('index')}`
 };
