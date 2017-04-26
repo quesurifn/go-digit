@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="mdc-typography">
   <head>
     <base href="/">
     <meta charset="utf-8">
@@ -7,6 +7,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png" />
+    <title>Material Components for the web</title>
+   <link rel="stylesheet"
+         href="open-digit/node_modules/material-components-web/dist/material-components-web.css">
   </head>
 
   <body>
@@ -46,5 +49,6 @@
        linkHandler.open();
       };
     </script>
-
+    <script src="templates/open-digit/node_modules/material-components-web/dist/material-components-web.js"></script>
+    <script>mdc.autoInit()</script>
 </html>
