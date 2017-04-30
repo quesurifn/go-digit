@@ -1,0 +1,6 @@
+digit:
+  dev_mode: 'true'
+plaid:
+  client_id: 'clientid'
+  public_key: 'publickey'
+  secret: 'secretkey'
