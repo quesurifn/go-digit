@@ -8,4 +8,7 @@ class PlaidController < ApplicationController
     end
     render json: response, status: Rack::Utils.status_code(:ok) 
   end
+
+  def auth
+  end
 end
