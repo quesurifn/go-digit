@@ -2,3 +2,4 @@ config/config.yml
 .byebug_history
 tmp/**
 log/**
+public/apidocs/**

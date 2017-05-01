@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  post ':exchange', to: 'plaid#exchange'
+  post 'login', to: 'plaid#exchange'
+  get 'swagger' => redirect('/apidocs/api-docs.json') if Rails.env.development?
 end
