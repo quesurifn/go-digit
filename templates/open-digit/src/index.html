@@ -16,7 +16,8 @@
     <fountain-root>Loading...</fountain-root>
   </body>
   <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
-
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="crossorigin="anonymous"></script>
     <script>
       var linkHandler = Plaid.create({
        env: 'sandbox',
@@ -29,8 +30,25 @@
          // The metadata object contains info about the
          // institution the user selected and the
          // account_id, if selectAccount is enabled.
-          console.log("Token: " + public_token + " Metadata: " + metadata);
+         
+         /*jQuery.post('/login' + ?"token=" + public_token, function() {
+           console.log("Sent")
+         })
+         .done(function() {
+           console.log("Success")
+         })
+         .fail(function() {
+           console.log("Send Failed")
+         })
+         .always(function() {
+           console.log("Success")
+         })*/ 
 
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/login?token=' + public_token, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+        xhr.send();
+        
        },
        onExit: function(err, metadata) {
          // The user exited the Link flow.
