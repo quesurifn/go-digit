@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HelloComponent} from './hello';
+import {StartComponent} from './start';
 
 @Component({
   selector: 'fountain-root',
@@ -12,6 +13,10 @@ export const routes: Routes = [
   {
     path: '',
     component: HelloComponent
+  },
+  {
+    path: 'get-started',
+    component: StartComponent,
   }
 ];
 
